@@ -28,6 +28,5 @@ int main()
     {
         Dog tmp = basic;
     }
-    std::cout << "ok\n";
     return 0;
 }
