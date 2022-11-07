@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat(Bureaucrat &other) {
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat &other) {
-    std::cout << "Bureucrat: Copy assignement construcot called" << std::endl;
+    std::cout << "Bureucrat: Copy assignement operator called" << std::endl;
     if (this != &other) {
         this->_grade = other._grade;
 	}
