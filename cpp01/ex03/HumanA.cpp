@@ -1,9 +1,7 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string nname, Weapon a) {
-    name = nname;
-    wb = 
-    //wb.setType(a.getType());
+HumanA::HumanA(std::string nname, Weapon &a) : name(nname), wb(a) {
+
 }
 
 void    HumanA::attack() {

@@ -1,33 +1,42 @@
 #ifndef FORM_HPP
-#define FORM_HPP
+# define FORM_HPP
 
-#include <iostream>
-#include <stdexcept>
+# include <iostream>
+# include <exception>
+# include "Bureaucrat.hpp"
+
 class Bureaucrat;
-class Form {
-    private:
-        const std::string _name;
-        bool	_signed;
-		const int _grade_sign;
-		const int _grade_execute;
-	public:
-		Form();
-		Form(std::string name, const int _grade_sign, const int _grade_execute);
-		Form(Form &other);
-		Form & operator= (Form &other);
-		class GradeTooHighException: public std::exception {
-            virtual const char* what() const throw();
-	    };
-	    class GradeTooLowException: public std::exception {
-		    virtual const char* what() const throw();
-	    };
-		const std::string getName();
-		bool getSign();
-		const int getGradeSign();
-		const int getGradeExecute();
-		void beSigned(Bureaucrat &a);
-} ;
 
-std::ostream& operator<<(std::ostream& out, Form& ob);
-#include "Bureaucrat.hpp"
+class Form
+{
+	private:
+		const std::string name;
+		bool is_signed;
+		const int sign_grade;
+		const int exec_grade;
+		Form();
+	public:
+		Form(const std::string name, int grade_sign, int grade_execute);
+		Form(Form const &other);
+		~Form();
+
+		Form &operator=(Form const &other);
+
+		std::string const getName() const;
+		bool getIsSigned() const;
+		int const getSignGrade() const;
+		int const getExecGrade() const;
+		void beSigned(const Bureaucrat *ob);
+
+		class GradeTooHighException: public std::exception {
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException: public std::exception {
+				virtual const char* what() const throw();
+		};
+};
+
+std::ostream &operator<<(std::ostream &out, Form const &other);
+
 #endif
